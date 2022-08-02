@@ -59,17 +59,17 @@ var filteredUsers = users.filter(user => {
 // }); 
 // lessThanFifteen // [ 10 ];
 
-var numbers = [10, 20, 30];
+let numbers = [10, 20, 30];
 
 
-function reject(array, iteratorFunction) {
+function reject(numbers, iteratorFunction) {
     return numbers.filter(number => {
-        return number < 15;
+        return !iteratorFunction(number);
     });
   
 }
 
-var lessThanFifteen = reject(numbers, function(number){
+let lessThanFifteen = reject(numbers, function(number){
   return number > 15;
 });
 
