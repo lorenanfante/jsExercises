@@ -82,3 +82,25 @@ var deskTypes = desks.reduce(function(props, desks) {
     props.standing = standing;
     return props;
 }, { sitting: 0, standing: 0 });
+
+
+
+/*Another really hard one!  Write a function called 'unique' that will remove all the duplicate values from an array.
+
+For example, given the following array:
+var numbers = [1, 1, 2, 3, 4, 4];
+Your function should return
+[1, 2, 3, 4]
+Hint: Use the 'reduce' and 'find' helpers.  */
+
+function unique(array) {
+    return array.reduce(function(props,element){
+        let existingEl = props.find((target) => target === element);
+        if(!existingEl){ 
+            props.push(element);
+        }
+        return props; 
+    
+    },[]);
+  
+}
