@@ -21,3 +21,22 @@ gen.next(); // leaving the house, here it enters to the function until yield
 // 
 gen.next('groceries'); // leaving the store with groceries
 gen.next('cleanClothes');
+
+/*Generators with for... of*/
+
+function* colors(){
+  yield 'red';
+  yield 'blue';
+  yield 'green';
+}
+
+const gen1 = colors();
+gen1.next();
+
+const myColors= [];
+
+for(let color of colors()){
+  myColors.push(color);
+};
+
+myColors;
