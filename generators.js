@@ -42,7 +42,13 @@ for(let color of colors()){
 myColors;
 
 /*Engenieering team */
+/*Delegation generators: when we need to delegate generators that we need to run at the same time*/
+const testingTeam = {
+  lead:'Amanda',
+  tester:'bill'
+};
 const engineeringTeam = {
+  testingTeam,
   size: 3,
   department: 'Engineering',
   lead: 'Jill',
@@ -54,7 +60,15 @@ function* TeamIterator(team){
   yield team.lead;
   yield team.manager;
   yield team.engineer;
-}
+  const testingTeamGenerator= TestingTeamIterator(team.testingTeam);
+  yield* testingTeamGenerator;
+
+};
+
+function* TestingTeamIterator (team){
+  yield team.lead;
+  yield team.tester;
+};
 
 const names = [];
 for(let name of TeamIterator(engineeringTeam)){
