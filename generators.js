@@ -45,7 +45,11 @@ myColors;
 /*Delegation generators: when we need to delegate generators that we need to run at the same time*/
 const testingTeam = {
   lead:'Amanda',
-  tester:'bill'
+  tester:'bill',
+  [Symbol.iterator]: function*(){
+    yield this.lead;
+    yield this.tester;
+  },
 };
 const engineeringTeam = {
   testingTeam,
@@ -60,14 +64,7 @@ function* TeamIterator(team){
   yield team.lead;
   yield team.manager;
   yield team.engineer;
-  const testingTeamGenerator= TestingTeamIterator(team.testingTeam);
-  yield* testingTeamGenerator;
-
-};
-
-function* TestingTeamIterator (team){
-  yield team.lead;
-  yield team.tester;
+  yield* testingTeam;
 };
 
 const names = [];
