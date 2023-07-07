@@ -19,8 +19,8 @@ fetch(baseUrl)
 .catch(error => console.error(`error: ${error}`));
 
 //example with two parameters
-fetch(Url,{
- method:'Post',
+fetch(baseUrl,{
+ method:'POST',
  headers:{
     'Content-Type':'application/json'
 },
